@@ -247,6 +247,13 @@ spec.register(__dirname, {
             ]
           }
         }
+      },
+
+      /* Long link title with ellipsis */
+      "~overflow": {
+        "dir": "_overflow",
+        "capture": ".md-sidebar--secondary .md-nav--secondary",
+        "break": "+@tablet-landscape"
       }
     }
   }

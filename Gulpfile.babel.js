@@ -30,6 +30,7 @@ import yargs from "yargs"
  * Configuration and arguments
  * ------------------------------------------------------------------------- */
 
+/* Configuration */
 const config = {
   assets: {
     src: "src/assets",                 /* Source directory for assets */
@@ -45,6 +46,7 @@ const config = {
   }
 }
 
+/* Arguments with defaults */
 let args = yargs
   .default("clean",      false)        /* Clean before build */
   .default("karma",      true)         /* Karma watchdog */
@@ -99,6 +101,10 @@ gulp.src = (...glob) => {
 
 /*
  * Helper function to load a task
+ *
+ * This function returns a callback that will require the task with the given
+ * name and execute the function that is returned by this task. It omits the
+ * need to load all tasks upfront, speeding up the build a gazillion times.
  */
 const load = task => {
   return done => {
